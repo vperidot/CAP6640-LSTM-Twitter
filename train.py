@@ -117,7 +117,7 @@ def run_experiment(X_train, y_train, X_val, y_val, X_test, y_test, full, seq_len
   fig, ax = plt.subplots(figsize=(15, 5))
   ax.plot(history.history['acc'], label='train accuracy')
   ax.plot(history.history['val_acc'], label='valid. accuracy')
-  plt.title('{} : Accuracy', fontsize=18)
+  plt.title('{} : Accuracy'.format(exp_name), fontsize=18)
   plt.legend(fontsize=16)
   plt.savefig('models/'+exp_name+'/accuracy_curve.png')
 
@@ -125,7 +125,7 @@ def run_experiment(X_train, y_train, X_val, y_val, X_test, y_test, full, seq_len
   fig, ax = plt.subplots(figsize=(15, 5))
   ax.plot(history.history['loss'], label='train loss')
   ax.plot(history.history['val_loss'], label='valid. loss')
-  plt.title('{} : Loss', fontsize=18)
+  plt.title('{} : Loss'.format(exp_name), fontsize=18)
   plt.legend(fontsize=16)
   plt.savefig('models/'+exp_name+'/loss_curve.png')
 
