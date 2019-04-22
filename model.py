@@ -34,7 +34,7 @@ def make_model(vocab_size=2500, seq_len=8, embedding_size=64, layers=3, channels
     model.add(Dense(vocab_size, activation='softmax'))
 
     # Adam is a common choice proven to work in a variety of scenarios
-    adam = optimizers.Adam(lr=1e-4)
+    adam = optimizers.Adam(lr=1e-3)
 
     # Compile and return
     model.compile(loss='categorical_crossentropy',
