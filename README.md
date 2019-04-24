@@ -46,7 +46,7 @@ Note: the first row (dropout=0) corresponds to the Depth=3 experiment above.
 | .50     | 0.4101 | 0.1697 | 0.1003 | 0.0771 | 1.620 | 0.5122 |
 | .65     | 0.3382 | 0.1452 | 0.0939 | 0.0728 | 1.798 | 0.4602 |
 
-### Selected Model
+### Validation of Selected Parameters
 
 The word-level model with a single layer and no dropout is selected as it has the highest **mean** BLEU score.
 
