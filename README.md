@@ -48,13 +48,13 @@ Note: the first row (dropout=0) corresponds to the Depth=3 experiment above.
 
 ### Selected Model
 
-The word-level model with a single layer and no dropout is selected as it has the highest mean Bleu score.
+The word-level model with a single layer and no dropout is selected as it has the highest **mean** BLEU score.
 
 **Donald Trump**
 
-| Dropout | BLEU-1   | BLEU-2   | BLEU-3   | BLEU-4   | LOSS    | ACC      |
-|---------|----------|----------|----------|----------|---------|----------|
-| **0**   |**0.3441**|**0.2419**|**0.2120**|**0.1897**|**5.801**|**0.1425**|
+| Depth | Dropout | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | LOSS  | ACC    |
+|-------|---------|--------|--------|--------|--------|-------|--------|
+| 1     |  0      | 0.3441 | 0.2419 | 0.2120 | 0.1897 | 5.801 | 0.1425 |
 
 Sample generated tweets (seeds provided to the generator are *italicized*):
 * *START # UNK the media doesnt want to...* the UNK of the fbi and doj he was a disgrace to the united states END
