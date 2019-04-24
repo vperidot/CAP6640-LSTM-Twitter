@@ -140,9 +140,14 @@ def run_experiment(X_train, y_train, X_val, y_val, X_test, y_test, full, seq_len
   #--------------------------
 
   # pull out all sentence starters from test data
-  seeds = [seed for seed in X_test if seed[0]==1 ]
+  #seeds = [seed for seed in X_test if seed[0]==1 ]
+  references = [f for f in full if len(f) >= seq_len]
+  references = references[:200]
+  print(references[:3])
+  seeds = [r[:seq_len] for r in references]
+  print(seeds[:3])
   # grab the first 200 only (makes calculating the score much faster)
-  seeds = seeds[:200]
+  # seeds = seeds[:200]
   # print a few as a sanity check
   # print('examples from {} seeds:'.format(len(seeds)))
   # print(vec_to_text(seeds[0], index_word))
@@ -151,29 +156,46 @@ def run_experiment(X_train, y_train, X_val, y_val, X_test, y_test, full, seq_len
 
   # setup for predictions
   predicted_tweets = []
-  bleu = 0.
+  bleu_1, bleu_2, bleu_3, bleu_4 = 0., 0., 0., 0.
   print('calculating bleu score...')
 
   # calucate a bleu score for each prediction
   # while collecting predicted tweets
-  for s in seeds:
-    s = s.reshape((1,8))
-    vec_pred = do_inference(s, 32, model, seq_len=seq_len)
-    predicted_tweet = list(s[0]) + list(vec_pred)
+  for s in range(len(seeds)):
+
+    seed = np.array(seeds[s]).reshape((1, seq_len))
+    max_steps = 132 if char_model else 32 
+    vec_pred = do_inference(seed, max_steps, model, seq_len=seq_len)
+    predicted_tweet = list(seed[0]) + list(vec_pred)
     predicted_tweets.append(predicted_tweet)
-    bleu += sentence_bleu(full, predicted_tweet)
+    bleu_1 += sentence_bleu([references[s]], predicted_tweet, weights=(1,0,0,0))
+    bleu_2 += sentence_bleu([references[s]], predicted_tweet, weights=(0,1,0,0))
+    bleu_3 += sentence_bleu([references[s]], predicted_tweet, weights=(0,0,1,0))
+    bleu_4 += sentence_bleu([references[s]], predicted_tweet, weights=(0,0,0,1))
 
   # average the bleu score
-  bleu_score = bleu/len(seeds)
-  print('BLEU SCORE: {}'.format(bleu_score))
+  bleu_1_avg = bleu_1/len(seeds)
+  bleu_2_avg = bleu_2/len(seeds)
+  bleu_3_avg = bleu_3/len(seeds)
+  bleu_4_avg = bleu_4/len(seeds)
+  print('BLEU-1 SCORE: {}'.format(bleu_1_avg))
+  print('BLEU-2 SCORE: {}'.format(bleu_2_avg))
+  print('BLEU-3 SCORE: {}'.format(bleu_3_avg))
+  print('BLEU-4 SCORE: {}'.format(bleu_4_avg))
 
   # save test results
-  output = 'BLEU SCORE: {}\n'.format(bleu_score)
-  output += 'TEST LOSS : {}\n'.format(test_loss)
-  output += 'TEST ACC. : {}'.format(test_accuracy)
+  output  = 'BLEU-1 SCORE : {}\n'.format(bleu_1_avg)
+  output += 'BLEU-2 SCORE : {}\n'.format(bleu_2_avg)
+  output += 'BLEU-3 SCORE : {}\n'.format(bleu_3_avg)
+  output += 'BLEU-4 SCORE : {}\n'.format(bleu_4_avg)
+  output += 'TEST LOSS    : {}\n'.format(test_loss)
+  output += 'TEST ACC.    : {}'.format(test_accuracy)
 
   with open('models/'+exp_name+'/predicted_tweets.txt', 'w') as f:
-    f.write( '\n'.join([vec_to_text(tweet, vocab_dict) for tweet in predicted_tweets]) )
+    if char_model:
+      f.write( ''.join([vec_to_text(tweet, vocab_dict) for tweet in predicted_tweets]) )
+    else:
+      f.write( '\n'.join([vec_to_text(tweet, vocab_dict) for tweet in predicted_tweets]) )
 
   with open('models/'+exp_name+'/score.txt', 'w') as f:
     f.write( output )
