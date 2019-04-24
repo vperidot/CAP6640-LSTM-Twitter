@@ -1,0 +1,7 @@
+exp_name='words-depth-2',
+epochs= 20,
+char_model=False, 
+seq_len=8,
+depth=2, 
+dropout=0,
+batch_norm=False
