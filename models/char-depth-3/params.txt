@@ -1,0 +1,7 @@
+exp_name='char-depth-3',
+epochs= 20,
+char_model=True, 
+seq_len=12,
+depth=3, 
+dropout=0,
+batch_norm=False, 
