@@ -5,6 +5,7 @@ files:
 * `model.py` : contains LSTM model creation functions
 * `train.py` : contains training and evaluation functions
 * `experiments_*.py` : contains code to run experiments
+* `models/` : contains parameters, saved weights, and results for each exepriment.
 
 ## Experiment Results
 
