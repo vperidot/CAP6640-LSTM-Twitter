@@ -1,0 +1,7 @@
+exp_name='char-dropout-50',
+epochs= 20,
+char_model=True, 
+seq_len=12,
+depth=3, 
+dropout=0.5,
+batch_norm=False,
