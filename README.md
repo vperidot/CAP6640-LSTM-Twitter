@@ -62,13 +62,38 @@ Sample generated tweets (seeds provided to the generator are *italicized*):
 * *START thank you for serving the well and...* the UNK of the UNK of our country and UNK are doing a great job in the history of the world END
 * *START theres not one UNK of evidence that...* they are UNK UNK of the russians and UNK for his UNK on the state of the history of the people of our country and the great governor of my UNK UNK
 * *START the people of venezuela stand at the...* state of kansas ron will be a fantastic governor for governor of the UNK of our country and UNK are doing a great job in the history of the world END
-* *START years ago today marines on UNK UNK...* amp others is a very dangerous and talented guy will be full and UNK the great job he is a UNK to UNK UNK UNK UNK UNK UNK UNK UNK UNK UNK
+* *START years ago today marines on UNK UNK...* & others is a very dangerous and talented guy will be full and UNK the great job he is a UNK to UNK UNK UNK UNK UNK UNK UNK UNK UNK UNK
 * *START there is far more energy on the...* us is now END
 
 **Michelle Obama**
-* Metrics 
-* Sample Outputs
+
+| Depth | Dropout | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | LOSS  | ACC    |
+|-------|---------|--------|--------|--------|--------|-------|--------|
+| 1     |  0      | 0.3647 | 0.3099 | 0.2885 | 0.2734 | 4.915 | 0.1836 |
+
+Sample generated tweets (seeds provided to the generator are *italicized*):
+
+* *START my heart is so full after visiting...* the UNK of the UNK # iambecoming END
+* *START thank you dallas for being on this...* journey and an voice heard END
+* *START thanks to my friend for UNK these...* UNK of action in nyc the UNK END
+* *START tomorrow UNK youre a UNK voter or...* to youand the UNK more is so one of the UNK END
+* *START on it getting my # UNK together...* and i cant wait to be a UNK of the UNK of the UNK of the UNK of the UNK of the UNK of the UNK of the UNK of the UNK
+* *START join in miami tomorrow at pm et...* for an difference baracks fired up for this election day & youand one in the latest END
+* *START starting chicago was the best job i...* know in UNK END
 
 **Ellen**
-* Metrics 
-* Sample Outputs
+
+| Depth | Dropout | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | LOSS  | ACC    |
+|-------|---------|--------|--------|--------|--------|-------|--------|
+| 1     |  0      | 0.5159 | 0.4325 | 0.4060 | 0.3824 | 4.846 | 0.1646 |
+
+
+Sample generated tweets (seeds provided to the generator are *italicized*):
+
+* *START very excited to UNK the newest #...* splittinguptogether is on tonight END
+* *START congratulations UNK s you won my watch...* this game is gon na be a lot of my show END
+* *START i love sending to surprise people at...* my show but i had to do it for the UNK END
+* *START macey hensley is a yearold presidential expert...* UNK UNK UNK UNK UNK UNK i cant wait to meet the UNK END
+* *START its time for another episode of #...* splittinguptogether is on pm on abc END
+* *START happy birthday to my friend wheres the...* new movie UNK UNK UNK i love you END
+* *START if youd ever like to challenge mark...* to do END
