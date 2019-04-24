@@ -27,6 +27,14 @@ files:
 
 ### Dropout (regularization)
 **Word Model**
+Note: the first row (dropout=0) corresponds to the Depth=1 experiment above.
+
+| Dropout | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | LOSS  | ACC    |
+|---------|--------|--------|--------|--------|-------|--------|
+| 0       | 0.3441 | 0.2419 | 0.2120 | 0.1897 | 5.801 | 0.1425 |
+| .25     | 0.2912 | 0.2068 | 0.1808 | 0.1607 | 5.475 | 0.1560 |
+| .50     | 0.2962 | 0.2244 | 0.1986 | 0.1786 | 5.269 | 0.1693 |
+| .65     | 0.2744 | 0.2158 | 0.1921 | 0.1727 | 5.273 | 0.1627 |
 
 **Character Model**
 
